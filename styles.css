@@ -1,0 +1,997 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    width: 100%; /* Ensure header is full width */
+    box-sizing: border-box; /* Include padding in header width */
+}
+
+header.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 20px;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+header.scrolled nav a {
+    color: #333;
+    text-shadow: none;
+}
+
+nav a:hover {
+    color: #2563eb;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.cta-buttons .btn-primary:first-child {
+    display: inline-block;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    border-color: #2563eb;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #1d4ed8, #1e40af);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #2563eb;
+    border-color: #2563eb;
+}
+
+.btn-secondary:hover {
+    background: #2563eb;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    color: #fff;
+    border-color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+header.scrolled .btn-outline {
+    color: #2563eb;
+    border-color: #2563eb;
+    text-shadow: none;
+}
+
+.btn-outline:hover {
+    background: #2563eb;
+    color: white;
+    border-color: #2563eb;
+    text-shadow: none;
+}
+
+/* Mobile menu elements - Hidden by default */
+.mobile-menu-toggle,
+.mobile-menu {
+    display: none;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-slider {
+    position: relative;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.slide-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.slide-content p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 3;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.dot.active {
+    background: #2563eb;
+}
+
+/* Section Styles */
+section {
+    padding: 5rem 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: 700;
+}
+
+.section-header p {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* About Section */
+.about {
+    background: #f8f9fa;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    color: #666;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Services Section */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid #2563eb;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.service-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.service-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.service-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.service-card p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.service-list {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.service-list li {
+    padding: 0.3rem 0;
+    color: #555;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.service-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #2563eb;
+    font-weight: bold;
+}
+
+/* Contact Form Section */
+.contact-form {
+    background: #f8f9fa;
+}
+
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e1e5e9;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+/* Founder Section */
+.founder-card {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.founder-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.founder-info h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.founder-info h4 {
+    color: #2563eb;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.founder-info p {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.founder-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.founder-social a {
+    width: 40px;
+    height: 40px;
+    background: #2563eb;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.founder-social a:hover {
+    transform: translateY(-2px);
+    background: #1d4ed8;
+}
+
+/* Contact Info Section */
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Force 3 columns on desktop */
+    gap: 2rem;
+}
+
+.contact-card {
+    padding: 1.5rem; /* Adjust padding */
+    display: flex; /* Use flexbox for horizontal layout */
+    align-items: center; /* Vertically center items */
+    gap: 1.5rem; /* Space between icon and text */
+    text-align: left; /* Align text to the left */
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    width: 50px; /* Slightly smaller icon size on mobile */
+    height: 50px; /* Slightly smaller icon size on mobile */
+    flex-shrink: 0; /* Prevent icon from shrinking */
+    margin: 0; /* Remove auto margins */
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.contact-card h3 {
+    font-size: 1.2rem; /* Adjust font size */
+    margin-bottom: 0.5rem; /* Adjusted margin */
+    color: #333;
+}
+
+.contact-card p {
+    font-size: 1rem; /* Adjust font size */
+    margin-bottom: 0; /* Remove default paragraph margin */
+    color: #666;
+}
+
+/* Style for clickable contact card links */
+.contact-card .contact-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color from parent */
+    display: flex; /* Use flexbox to maintain internal layout */
+    flex-direction: row; /* Keep icon and text in a row */
+    align-items: center; /* Vertically center content */
+    gap: 1.5rem; /* Match gap from .contact-card */
+    width: 100%; /* Make the link fill the card width */
+}
+
+/* Footer */
+footer {
+    background: #1e3a8a;
+    color: white;
+    padding: 3rem 0 1rem;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.footer-logo img {
+    height: 200px;
+    margin-bottom: 0 !important;
+}
+
+.footer-logo p {
+    color: #bfdbfe;
+    line-height: 1.6;
+    text-align: left;
+    margin-top: 0.3rem !important;
+}
+
+.footer-links h3,
+.footer-services h3,
+.footer-contact h3 {
+    margin-bottom: 1rem;
+    color: #93c5fd;
+}
+
+.footer-links ul,
+.footer-services ul {
+    list-style: none;
+}
+
+.footer-links li,
+.footer-services li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a,
+.footer-services a {
+    color: #bfdbfe;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-services a:hover {
+    color: #93c5fd;
+}
+
+.footer-contact p {
+    margin-bottom: 0.5rem;
+    color: #bfdbfe;
+}
+
+.footer-contact i {
+    color: #93c5fd;
+    margin-right: 0.5rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    justify-content: flex-start;
+}
+
+.social-icons a {
+    width: 36px;
+    height: 36px;
+    background: #2563eb;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.social-icons a:hover {
+    transform: translateY(-2px);
+    background: #1d4ed8;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #1e40af;
+    color: #bfdbfe;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+        width: 100%; /* Ensure container takes full width */
+        box-sizing: border-box; /* Include padding in width */
+    }
+
+    /* Header layout on mobile */
+    header .container {
+        flex-direction: row;
+        justify-content: space-between; /* Space out logo, Get Started, and Toggle */
+        align-items: center;
+        padding: 1rem 15px; /* Adjusted padding */
+        gap: 0; /* Remove gap on the container itself */
+        width: 100%; /* Ensure header container takes full width */
+        box-sizing: border-box; /* Include padding in width */
+        min-height: 60px; /* Set minimum height for header on mobile */
+    }
+
+    /* Hide desktop navigation */
+    nav {
+        display: none;
+    }
+
+    /* Adjust cta-buttons on mobile */
+    .cta-buttons {
+        display: flex; /* Keep as flex container */
+        align-items: center;
+        gap: 1rem; /* Gap between Get Started and Toggle */
+    }
+
+    /* Hide the Contact Us button in the header on mobile */
+    .cta-buttons .btn-primary:first-child {
+        display: none;
+    }
+
+    /* Show and style the mobile menu toggle */
+    .mobile-menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.8rem;
+        color: #333; /* Adjust color as needed */
+        cursor: pointer;
+        z-index: 1001; /* Ensure it's above other content */
+    }
+
+    header.scrolled .mobile-menu-toggle {
+        color: #333; /* Ensure color is visible when scrolled */
+    }
+
+    /* Style for the mobile menu container */
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -250px; /* Initially off-screen, match width */
+        width: 250px; /* This width is intentional for the menu panel */
+        height: 100vh;
+        background: #1e3a8a; /* Background color for the menu */
+        color: white;
+        padding: 5rem 1.5rem 1.5rem; /* Adjust padding considering header height */
+        transition: right 0.3s ease-in-out;
+        z-index: 999; /* Below toggle, above content */
+        display: flex;
+        flex-direction: column;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.2); /* Add subtle shadow */
+        box-sizing: border-box; /* Include padding in width */
+    }
+
+    .mobile-menu.active {
+        right: 0; /* Slide in */
+    }
+
+    .mobile-menu ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        flex-grow: 1; /* Make the ul grow to fill available space */
+    }
+
+    .mobile-menu a {
+        color: white; /* Menu link color */
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+
+    .mobile-menu a:hover {
+        color: #93c5fd; /* Hover color */
+    }
+
+    .mobile-menu .mobile-contact-btn {
+        width: 100%; /* Make button full width in menu */
+        text-align: center;
+        box-sizing: border-box; /* Include padding in width */
+    }
+
+    /* Hide the About section image on mobile */
+    .about-image-mobile-hidden {
+        display: none;
+    }
+
+    /* Hero section mobile adjustments */
+    .slide-content h1 {
+        font-size: 2rem; /* Reduced font size for mobile */
+        line-height: 1.3; /* Slightly adjust line height for readability */
+        margin-bottom: 1.5rem; /* Adjust margin below heading */
+        width: 100%; /* Ensure heading takes full width */
+        box-sizing: border-box; /* Include padding in width */
+    }
+
+    .slide-content p {
+        display: none; /* Hide paragraph on mobile */
+    }
+
+     .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem; /* Adjusted gap */
+        width: 100%; /* Allow buttons to take full width if needed */
+        box-sizing: border-box; /* Include padding in width */
+    }
+
+    .hero-buttons .btn-secondary {
+        display: none; /* Hide Let Us Know About You button */
+    }
+
+    .hero-buttons .btn-primary {
+        display: inline-block;
+        white-space: nowrap; /* Prevent text wrapping */
+        padding: 0.7rem 1.4rem; /* Slightly increased padding */
+        font-size: 1rem; /* Adjusted font size */
+        box-sizing: border-box; /* Include padding in width */
+    }
+
+    /* General mobile adjustments for sections */
+    section {
+        padding: 3rem 0; /* Adjusted section padding */
+    }
+
+    .about-content {
+        grid-template-columns: 1fr; /* Stack about content */
+        gap: 2rem;
+        width: 100%; /* Ensure about content takes full width */
+        box-sizing: border-box; /* Include padding in width */
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr; /* Stack service cards */
+        width: 100%; /* Ensure services grid takes full width */
+        box-sizing: border-box; /* Include padding in width */
+    }
+
+    .service-card {
+        padding: 1.5rem; /* Adjust padding */
+        width: 100%; /* Ensure service card takes full width */
+        box-sizing: border-box; /* Include padding in width */
+    }
+
+    .service-card h3 {
+        font-size: 1.2rem; /* Adjust font size */
+        margin-bottom: 0.5rem; /* Adjusted margin */
+    }
+
+    .service-card p {
+        font-size: 1rem; /* Adjust font size */
+        margin-bottom: 0; /* Remove default paragraph margin */
+    }
+
+    .form-row {
+        grid-template-columns: 1fr; /* Stack form inputs */
+        gap: 1rem; /* Adjusted gap */
+    }
+
+    .form-container {
+        padding: 1.5rem; /* Adjust padding */
+        width: 100%; /* Ensure form container takes full width */
+        box-sizing: border-box; /* Include padding in width */
+    }
+
+    .form-group {
+         margin-bottom: 1rem; /* Adjusted margin */
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.6rem; /* Adjusted padding */
+        font-size: 0.9rem; /* Adjusted font size */
+    }
+
+    .founder-card {
+        grid-template-columns: 1fr; /* Stack founder info */
+        padding: 2rem 1.5rem; /* Adjust padding */
+        text-align: center; /* Center text in founder card on mobile */
+        width: 100%; /* Ensure founder card takes full width */
+        box-sizing: border-box; /* Include padding in width */
+    }
+
+    .founder-image {
+        height: 200px; /* Adjusted image height */
+        object-fit: cover;
+    }
+
+    .founder-info h2 {
+        font-size: 1.4rem; /* Adjusted font size */
+    }
+
+    .founder-info h4 {
+        font-size: 0.9rem; /* Adjusted font size */
+    }
+
+    .founder-info p {
+        font-size: 0.9rem; /* Adjusted font size */
+        margin-bottom: 1.5rem; /* Adjusted margin */
+    }
+
+    .founder-social {
+        justify-content: center; /* Center social icons */
+        display: flex; /* Ensure it's a flex container */
+        gap: 1rem; /* Adjusted gap */
+    }
+
+    .contact-cards {
+        grid-template-columns: 1fr; /* Stack contact cards */
+        width: 100%; /* Ensure contact cards takes full width */
+        box-sizing: border-box; /* Include padding in width */
+    }
+
+    .contact-card {
+        padding: 1rem; /* Further adjusted padding */
+        display: flex; /* Use flexbox for horizontal layout */
+        align-items: center; /* Vertically center items */
+        gap: 1rem; /* Adjusted space between icon and text */
+        text-align: left; /* Align text to the left */
+        width: 100%; /* Ensure contact card takes full width */
+        box-sizing: border-box; /* Include padding in width */
+    }
+
+     .card-icon {
+        width: 40px; /* Further smaller icon size on mobile */
+        height: 40px; /* Further smaller icon size on mobile */
+        flex-shrink: 0;
+        margin: 0;
+     }
+
+    .contact-card h3 {
+        font-size: 1.1rem; /* Further adjusted font size */
+        margin-bottom: 0.3rem; /* Further adjusted margin */
+    }
+
+     .contact-card p {
+        font-size: 0.9rem; /* Further adjusted font size */
+        margin-bottom: 0;
+     }
+
+    /* Adjust spacing for the section before the footer on mobile */
+    .contact-info {
+        padding-bottom: 3rem; /* Add bottom padding on mobile */
+        padding-top: 3rem; /* Ensure consistent section top padding */
+    }
+
+    /* Adjust footer spacing on mobile */
+    footer {
+        padding-top: 0; /* Remove top padding on footer */
+        margin-top: 0; /* Remove top margin on footer */
+    }
+
+    /* Hide footer content except copyright on mobile */
+    .footer-content {
+        display: none; /* Ensure main footer content is hidden */
+    }
+
+    .footer-bottom {
+        text-align: center; /* Ensure copyright text is centered */
+        padding: 1rem 0.5rem; /* Adjusted padding */
+        border-top: none; /* Remove border */
+        margin-top: 0; /* Explicitly remove top margin */
+        width: 100%; /* Ensure footer bottom takes full width */
+        box-sizing: border-box; /* Include padding in width */
+    }
+
+    /* Social media icons in mobile menu */
+    .mobile-menu-social {
+        display: flex;
+        justify-content: center; /* Center icons horizontally */
+        gap: 1.5rem; /* Space between icons */
+        margin-top: auto; /* Push icons to the bottom */
+        padding-top: 1.5rem; /* Add some space above icons */
+        border-top: 1px solid rgba(255, 255, 255, 0.2); /* Add a separator line */
+    }
+
+    .mobile-menu-social a {
+        color: white; /* Icon color */
+        font-size: 1.8rem; /* Icon size */
+        transition: color 0.3s ease;
+    }
+
+    .mobile-menu-social a:hover {
+        color: #93c5fd; /* Hover color */
+    }
+
+}
+
+@media (max-width: 480px) {
+    .slide-content h1 {
+        font-size: 1.8rem; /* Further reduced font size */
+    }
+
+    .slide-content p {
+        font-size: 0.9rem; /* Further reduced font size */
+    }
+
+    .section-header h2 {
+        font-size: 1.8rem; /* Further reduced font size */
+    }
+
+    .form-container {
+        padding: 1rem; /* Further reduced padding */
+    }
+
+    .founder-card {
+        padding: 1rem; /* Further reduced padding */
+    }
+}
+
+@media (max-width: 370px) {
+    /* Styles for very narrow screens */
+    header .container {
+        padding: 1rem 10px; /* Reduce horizontal padding */
+    }
+
+    .hero-buttons .btn {
+        padding: 0.5rem 1rem; /* Slightly reduce button padding */
+        font-size: 0.85rem; /* Slightly reduce button font size */
+    }
+}
